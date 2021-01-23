@@ -49,7 +49,14 @@ When an user requests a feature (through a role), the feature owner must approve
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pqg9wFhKEeuU16yNlkGpXw" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_uoSrQNclEeq-pdhod7KGaA" name="FeatureType"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_uoSrQNclEeq-pdhod7KGaA" name="FeatureType">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_jVthAFzuEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_mD9P8FzuEeuTWeG0CGc_KQ" name="description">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_CnFU8NcmEeq-pdhod7KGaA" name="Event">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_uaGCEVcoEeuU16yNlkGpXw" name="feature" type="_rpTxoNclEeq-pdhod7KGaA" aggregation="composite" association="_uaEz8FcoEeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uaGCElcoEeuU16yNlkGpXw"/>
