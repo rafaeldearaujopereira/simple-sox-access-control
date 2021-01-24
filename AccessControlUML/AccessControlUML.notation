@@ -354,7 +354,12 @@
   <children xmi:type="notation:Shape" xmi:id="_7rf5EFkdEeuBQKKU2AMrlA" type="Comment_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_7rmmwFkdEeuBQKKU2AMrlA" type="Comment_BodyLabel"/>
     <element xmi:type="uml:Comment" href="AccessControlUML.uml#_7ooLQFkdEeuBQKKU2AMrlA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7rf5EVkdEeuBQKKU2AMrlA" x="720" y="-120"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7rf5EVkdEeuBQKKU2AMrlA" x="880"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_o6TqUF5UEeuTWeG0CGc_KQ" type="Comment_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_o6U4cF5UEeuTWeG0CGc_KQ" type="Comment_BodyLabel"/>
+    <element xmi:type="uml:Comment" href="AccessControlUML.uml#_o59FAF5UEeuTWeG0CGc_KQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o6TqUV5UEeuTWeG0CGc_KQ" x="740" y="-140" width="181"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_TtbAQdclEeq-pdhod7KGaA" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_TtbAQtclEeq-pdhod7KGaA"/>
@@ -879,5 +884,12 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_DUkhIlhLEeuU16yNlkGpXw" points="[523, 0, -643984, -643984]$[580, 60, -643984, -643984]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DVl00FhLEeuU16yNlkGpXw" id="(1.0,0.6666666666666666)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DVl00VhLEeuU16yNlkGpXw" id="(0.0,0.2)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_y4KakF5UEeuTWeG0CGc_KQ" type="Comment_AnnotatedElementEdge" source="_o6TqUF5UEeuTWeG0CGc_KQ" target="_uoUgcNclEeq-pdhod7KGaA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_y4KakV5UEeuTWeG0CGc_KQ"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_y4Kakl5UEeuTWeG0CGc_KQ" points="[740, -100, -643984, -643984]$[697, -100, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y5PYoF5UEeuTWeG0CGc_KQ" id="(0.0,0.6666666666666666)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_y5PYoV5UEeuTWeG0CGc_KQ" id="(1.0,0.3669724770642202)"/>
   </edges>
 </notation:Diagram>

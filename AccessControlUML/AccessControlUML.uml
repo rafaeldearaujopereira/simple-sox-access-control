@@ -14,6 +14,9 @@ When an user requests a feature (through a role), the feature owner must approve
 - quantity of failed attempts&#xD;
 - date and time of last successful login</body>
     </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_o59FAF5UEeuTWeG0CGc_KQ" annotatedElement="_uoSrQNclEeq-pdhod7KGaA">
+      <body>SYSTEM, FEATURE, TASK, MENU, ACTION, ACCESS</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_f3voENclEeq-pdhod7KGaA" name="User">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_mxXosFbREeuU16yNlkGpXw" name="user" type="_f3voENclEeq-pdhod7KGaA" aggregation="shared" association="_mxMCgFbREeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mxaE8FbREeuU16yNlkGpXw"/>
