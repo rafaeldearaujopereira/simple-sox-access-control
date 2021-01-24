@@ -7,12 +7,26 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import com.rafpereira.accesscontrol.model.FeatureType;
+import com.rafpereira.data.util.SessionFactoryUtil;
 
 public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
+
+	/**
+	 * The current implementation (for the user system).
+	 */
+	protected static SessionFactoryUtil sessionFactoryUtil;
 
 	private static SessionFactory factory;
 	
 	private static ServiceRegistry serviceRegistry;
+	
+	/**
+	 * Obtains the current implementation of the session factory.
+	 * @return The session factory.
+	 */
+	public static SessionFactoryUtil getInstance() {
+		return sessionFactoryUtil;
+	}
 	
 	private static SessionFactory getSessionFactory() {
 		if (factory == null && sessionFactoryUtil != null) {
@@ -29,9 +43,9 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 	}
 
 	@Override
-	protected Configuration getConfiguration() {
+	public Configuration getConfiguration() {
 		Configuration config = new Configuration();
-		config.configure();
+		config.configure("/com/rafpereira/accesscontrol/config/hibernate.cfg.xml");
 		config.addAnnotatedClass(FeatureType.class);
 		return config;
 	}

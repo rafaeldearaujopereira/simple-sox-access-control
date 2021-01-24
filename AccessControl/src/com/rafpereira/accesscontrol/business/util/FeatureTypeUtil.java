@@ -7,15 +7,16 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 
-import com.rafpereira.accesscontrol.data.util.SessionFactoryUtil;
+import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.FeatureType;
+import com.rafpereira.data.util.SessionFactoryUtil;
 
 public class FeatureTypeUtil extends CrudAccessControlUtil<FeatureType> {
 
 	@Override
 	public List<FeatureType> listByFilter(FeatureType featureTypeFilter, boolean loadChildren) {
 
-		Session session = SessionFactoryUtil.getInstance().getSession();
+		Session session = getSessionFactoryInstance().getSession();
 		
 		ArrayList<Object> params = new ArrayList<>();
 		StringBuilder sb = new StringBuilder();
@@ -39,6 +40,11 @@ public class FeatureTypeUtil extends CrudAccessControlUtil<FeatureType> {
 		List<FeatureType> items = query.getResultList();
 		session.close();
 		return items;
+	}
+
+	@Override
+	public SessionFactoryUtil getSessionFactoryInstance() {
+		return AccessControlSessionFactoryUtil.getInstance();
 	}
 
 }

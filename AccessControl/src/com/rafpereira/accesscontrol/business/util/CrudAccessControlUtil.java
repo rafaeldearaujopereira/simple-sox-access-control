@@ -5,12 +5,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.rafpereira.accesscontrol.data.util.SessionFactoryUtil;
+import com.rafpereira.data.util.SessionFactoryUtil;
 
 public abstract class CrudAccessControlUtil<T> extends AccessControlUtil {
 
+	public abstract SessionFactoryUtil getSessionFactoryInstance();
+	
 	public boolean save(T t) {
-		Session session = SessionFactoryUtil.getInstance().getSession();
+		Session session = getSessionFactoryInstance().getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
@@ -32,7 +34,7 @@ public abstract class CrudAccessControlUtil<T> extends AccessControlUtil {
 	}
 
 	public boolean remove(T t) {
-		Session session = SessionFactoryUtil.getInstance().getSession();
+		Session session = getSessionFactoryInstance().getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
