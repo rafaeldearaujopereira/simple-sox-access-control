@@ -162,8 +162,8 @@ When an user requests a feature (through a role), the feature owner must approve
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3UB3MFcoEeuU16yNlkGpXw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3UCeQFcoEeuU16yNlkGpXw" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_3UDFUVcoEeuU16yNlkGpXw" name="feature" type="_rpTxoNclEeq-pdhod7KGaA" association="_3UBQIFcoEeuU16yNlkGpXw"/>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_3UCeQVcoEeuU16yNlkGpXw" name="featuretype" type="_uoSrQNclEeq-pdhod7KGaA" aggregation="composite" association="_3UBQIFcoEeuU16yNlkGpXw">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_3UDFUVcoEeuU16yNlkGpXw" type="_rpTxoNclEeq-pdhod7KGaA" association="_3UBQIFcoEeuU16yNlkGpXw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_3UCeQVcoEeuU16yNlkGpXw" type="_uoSrQNclEeq-pdhod7KGaA" aggregation="composite" association="_3UBQIFcoEeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3UCeQlcoEeuU16yNlkGpXw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3UDFUFcoEeuU16yNlkGpXw" value="1"/>
       </ownedEnd>
