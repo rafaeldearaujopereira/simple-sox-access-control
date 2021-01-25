@@ -6,6 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import com.rafpereira.accesscontrol.model.EventType;
 import com.rafpereira.accesscontrol.model.FeatureType;
 import com.rafpereira.data.util.SessionFactoryUtil;
 
@@ -47,6 +48,7 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 		Configuration config = new Configuration();
 		config.configure("/com/rafpereira/accesscontrol/config/hibernate.cfg.xml");
 		config.addAnnotatedClass(FeatureType.class);
+		config.addAnnotatedClass(EventType.class);
 		return config;
 	}
 
