@@ -43,16 +43,12 @@ public class FeatureType {
 		ACCESS.setId(6L);
 	}
 
-	/**
-	 * Id.
-	 */
+	/** Id. */
 	@Id
 	@Column(name = "id")
 	private Long id;
 
-	/**
-	 * Description.
-	 */
+	/** Description. */
 	@Column(name = "description")
 	private String description;
 

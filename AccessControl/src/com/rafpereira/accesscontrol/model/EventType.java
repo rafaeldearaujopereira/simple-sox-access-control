@@ -57,16 +57,12 @@ public class EventType {
 		INVALID_VERSION.setId(10L);
 	}
 
-	/**
-	 * Id.
-	 */
+	/** Id. */
 	@Id
 	@Column(name = "id")
 	private Long id;
 
-	/**
-	 * Description.
-	 */
+	/** Description. */
 	@Column(name = "description")
 	private String description;
 
