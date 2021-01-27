@@ -21,9 +21,31 @@ When an user requests a feature (through a role), the feature owner must approve
       <body>LOGIN, LOGOUT, CREATE. UPDATE, DELETE, SEARCH, INVALID_ACCESS, ACCESS, ACTION, INVALID_VERSION</body>
     </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_f3voENclEeq-pdhod7KGaA" name="User">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_mxXosFbREeuU16yNlkGpXw" name="user" type="_f3voENclEeq-pdhod7KGaA" aggregation="shared" association="_mxMCgFbREeuU16yNlkGpXw">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_mxXosFbREeuU16yNlkGpXw" type="_f3voENclEeq-pdhod7KGaA" aggregation="shared" association="_mxMCgFbREeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mxaE8FbREeuU16yNlkGpXw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mxasAFbREeuU16yNlkGpXw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_a9qe0GBNEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_hnOz0GBNEeuTWeG0CGc_KQ" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_kRCHoGBNEeuTWeG0CGc_KQ" name="login">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nG9y8GBNEeuTWeG0CGc_KQ" name="email">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_p3SlgGBNEeuTWeG0CGc_KQ" name="active">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6HoAcGBNEeuTWeG0CGc_KQ" name="manager" type="_f3voENclEeq-pdhod7KGaA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L0RoYGBOEeuTWeG0CGc_KQ" name="roles">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VyuOgGBOEeuTWeG0CGc_KQ" name="featuresByCode">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_hbnOkNclEeq-pdhod7KGaA" name="Role"/>
@@ -207,7 +229,7 @@ When an user requests a feature (through a role), the feature owner must approve
       <ownedEnd xmi:type="uml:Property" xmi:id="_0cjzcVcrEeuU16yNlkGpXw" name="feature" type="_rpTxoNclEeq-pdhod7KGaA" association="_0cilUFcrEeuU16yNlkGpXw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_DehWwFcsEeuU16yNlkGpXw" name="RoleRequest">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TwizwlcsEeuU16yNlkGpXw" name="rolerequeststatus" type="_PON4EFcsEeuU16yNlkGpXw" association="_TwiMsFcsEeuU16yNlkGpXw">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TwizwlcsEeuU16yNlkGpXw" type="_PON4EFcsEeuU16yNlkGpXw" association="_TwiMsFcsEeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Twja0FcsEeuU16yNlkGpXw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Twja0VcsEeuU16yNlkGpXw" value="1"/>
       </ownedAttribute>
@@ -231,7 +253,7 @@ When an user requests a feature (through a role), the feature owner must approve
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TwizwFcsEeuU16yNlkGpXw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TwizwVcsEeuU16yNlkGpXw" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_Twja0lcsEeuU16yNlkGpXw" name="rolerequest" type="_DehWwFcsEeuU16yNlkGpXw" association="_TwiMsFcsEeuU16yNlkGpXw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Twja0lcsEeuU16yNlkGpXw" type="_DehWwFcsEeuU16yNlkGpXw" association="_TwiMsFcsEeuU16yNlkGpXw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_V8UHwFcsEeuU16yNlkGpXw" memberEnd="_V8Uu0lcsEeuU16yNlkGpXw _V8VV4lcsEeuU16yNlkGpXw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_V8Uu0FcsEeuU16yNlkGpXw" source="org.eclipse.papyrus">
