@@ -29,8 +29,11 @@ active boolean not null default true,
 manager_id bigint null
 );
 
-alter table 
+alter table system_user add constraint system_user_pk primary key (id);
 
+alter table system_user add constraint system_user_uk_login unique (login);
+
+alter table system_user add constraint system_user_fk_manager foreign key (manager_id) references system_user (id);
 
 
 
@@ -45,6 +48,17 @@ feature_type_id smallint not null,
 owner_id bigint null
 );
 
+alter table feature add constraint feature_pk primary key (id);
+
+alter table feature add constraint feature_uk_logic unique (parent_id, name);
+
+alter table feature add constraint feature_uk_code unique (code);
+
+alter table feature add constraint feature_fk_parent foreign key (parent_id) references feature (id);
+
+alter table feature add constraint feature_fk_type foreign key (feature_type_id) references feature_type (id);
+
+alter table feature add constraint feature_fk_owner foreign key (owner_id) references system_user (id);
 
 
 
