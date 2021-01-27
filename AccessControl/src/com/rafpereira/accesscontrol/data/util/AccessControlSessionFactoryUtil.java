@@ -7,8 +7,13 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import com.rafpereira.accesscontrol.model.EventType;
+import com.rafpereira.accesscontrol.model.Feature;
 import com.rafpereira.accesscontrol.model.FeatureType;
+import com.rafpereira.accesscontrol.model.Role;
+import com.rafpereira.accesscontrol.model.User;
 import com.rafpereira.data.util.SessionFactoryUtil;
+
+import antlr.Version;
 
 public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 
@@ -49,6 +54,10 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 		config.configure("/com/rafpereira/accesscontrol/config/hibernate.cfg.xml");
 		config.addAnnotatedClass(FeatureType.class);
 		config.addAnnotatedClass(EventType.class);
+		config.addAnnotatedClass(User.class);
+		config.addAnnotatedClass(Version.class);
+		config.addAnnotatedClass(Role.class);
+		config.addAnnotatedClass(Feature.class);
 		return config;
 	}
 
