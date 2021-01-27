@@ -62,7 +62,6 @@ alter table feature add constraint feature_fk_owner foreign key (owner_id) refer
 
 
 
-
 create sequence user_seq;
 
 create sequence feature_seq;
