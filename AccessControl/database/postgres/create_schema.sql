@@ -113,6 +113,22 @@ alter table access add constraint access_fk_feature foreign key (feature_id) ref
 
 
 
+create table version (
+id bigint not null, 
+feature_id bigint not null,
+release_date date not null,
+version_number numeric(5, 2) not null,
+name varchar(100) not null,
+description varchar(200) not null,
+mandatory boolean not null default false
+);
+
+alter table version add constraint version_pk primary key (id);
+
+alter table version add constraint version_uk_logic unique (feature_id, version_number);
+
+alter table version add constraint version_fk_feature foreign key (feature_id) references feature (id);
+
 
 
 
@@ -121,3 +137,5 @@ create sequence user_seq;
 create sequence feature_seq;
 
 create sequence role_seq;
+
+create sequence version_seq;

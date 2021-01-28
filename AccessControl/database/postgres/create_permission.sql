@@ -14,6 +14,7 @@ grant select, insert, update, delete on user_role to accessctl_user;
 
 grant select, insert, update, delete on access to accessctl_user;
 
+grant select, insert, update, delete on version to accessctl_user;
 
 
 
@@ -23,3 +24,5 @@ grant select on user_seq to accessctl_user;
 grant select on feature_seq to accessctl_user;
 
 grant select on role_seq to accessctl_user;
+
+grant select on version_seq to accessctl_user;
