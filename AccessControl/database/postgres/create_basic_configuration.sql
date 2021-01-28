@@ -18,4 +18,10 @@ insert into event_type (id, description) values (9, 'Action');
 insert into event_type (id, description) values (10, 'Invalid Version');
 
 
+insert into event_status (id, description) values (1, 'Created');
+insert into event_status (id, description) values (2, 'OK');
+insert into event_status (id, description) values (3, 'Error');
+insert into event_status (id, description) values (4, 'Invalid Form');
+
+
 commit;

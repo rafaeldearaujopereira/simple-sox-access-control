@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * The type of a event.
+ * The type of an event.
  * @author rafaeldearaujopereira
  */
 @Entity

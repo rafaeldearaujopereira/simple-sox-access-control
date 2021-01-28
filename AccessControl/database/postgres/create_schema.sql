@@ -20,6 +20,18 @@ alter table event_type add constraint event_type_uk_desc unique (description);
 
 
 
+create table event_status (
+id smallint not null,
+description varchar(60) not null
+);
+
+alter table event_status add constraint event_status_pk primary key (id);
+
+alter table event_status add constraint event_status_uk_desc unique (description);
+
+
+
+
 create table system_user (
 id bigint not null,
 name varchar(100) not null, 
@@ -62,6 +74,50 @@ alter table feature add constraint feature_fk_owner foreign key (owner_id) refer
 
 
 
+create table role (
+id bigint not null,
+name varchar(100) not null,
+description varchar(200) not null
+);
+
+alter table role add constraint role_pk primary key (id);
+
+alter table role add constraint role_uk_name unique (name);
+
+
+
+create table user_role (
+user_id bigint not null, 
+role_id bigint not null
+);
+
+
+alter table user_role add constraint user_role_pk primary key (user_id, role_id);
+
+alter table user_role add constraint user_role_fk_user foreign key (user_id) references system_user (id);
+
+alter table user_role add constraint user_role_fk_role foreign key (role_id) references role (id);
+
+
+
+create table access (
+role_id bigint not null,
+feature_id bigint not null
+);
+
+alter table access add constraint access_pk primary key (role_id, feature_id);
+
+alter table access add constraint access_fk_role foreign key (role_id) references role (id);
+
+alter table access add constraint access_fk_feature foreign key (feature_id) references feature (id);
+
+
+
+
+
+
 create sequence user_seq;
 
 create sequence feature_seq;
+
+create sequence role_seq;

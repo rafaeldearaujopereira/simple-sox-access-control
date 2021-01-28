@@ -21,7 +21,6 @@ import javax.persistence.Transient;
 
 /**
  * User of a system.
- * 
  * @author rafaeldearaujopereira
  */
 @Entity
@@ -121,6 +120,14 @@ public class User {
 	}
 
 	public HashMap<String, Feature> getFeaturesByCode() {
+		if (this.featuresByCode == null) {
+			featuresByCode = new HashMap<>();
+			for (Role role : roles) {
+				for (Feature feature : role.getFeatures()) {
+					featuresByCode.put(feature.getCode(), feature);
+				}
+			}
+		}
 		return featuresByCode;
 	}
 
