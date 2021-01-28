@@ -155,10 +155,10 @@ When an user requests a feature (through a role), the feature owner must approve
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_kBVuoF60EeuTWeG0CGc_KQ" type="_rpTxoNclEeq-pdhod7KGaA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_wGLZgF60EeuTWeG0CGc_KQ" name="date">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wGLZgF60EeuTWeG0CGc_KQ" name="releaseDate">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_zgaEsF60EeuTWeG0CGc_KQ" name="number">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zgaEsF60EeuTWeG0CGc_KQ" name="versionNumber">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigDecimal"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_4HYP0F60EeuTWeG0CGc_KQ" name="name">
