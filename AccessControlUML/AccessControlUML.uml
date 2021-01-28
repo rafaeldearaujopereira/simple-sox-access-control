@@ -20,6 +20,9 @@ When an user requests a feature (through a role), the feature owner must approve
     <ownedComment xmi:type="uml:Comment" xmi:id="_1hQFoF61EeuTWeG0CGc_KQ" annotatedElement="_Lm1eMNcmEeq-pdhod7KGaA">
       <body>LOGIN, LOGOUT, CREATE. UPDATE, DELETE, SEARCH, INVALID_ACCESS, ACCESS, ACTION, INVALID_VERSION</body>
     </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_-rZxwGEKEeuTWeG0CGc_KQ" annotatedElement="_rIRJUGEKEeuTWeG0CGc_KQ">
+      <body>CREATED, OK, ERROR, INVALID_FORM</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_f3voENclEeq-pdhod7KGaA" name="User">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_mxXosFbREeuU16yNlkGpXw" type="_f3voENclEeq-pdhod7KGaA" aggregation="shared" association="_mxMCgFbREeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mxaE8FbREeuU16yNlkGpXw"/>
@@ -48,7 +51,23 @@ When an user requests a feature (through a role), the feature owner must approve
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_hbnOkNclEeq-pdhod7KGaA" name="Role"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hbnOkNclEeq-pdhod7KGaA" name="Role">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MaaHIGEFEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Qe-v0GEFEeuTWeG0CGc_KQ" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_S4zt8GEFEeuTWeG0CGc_KQ" name="description">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gQReUGEFEeuTWeG0CGc_KQ" name="features">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_otKyIGEFEeuTWeG0CGc_KQ" name="users">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_rpTxoNclEeq-pdhod7KGaA" name="Feature">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_0cjMYlcrEeuU16yNlkGpXw" name="owner" type="_f3voENclEeq-pdhod7KGaA" association="_0cilUFcrEeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0cjMY1crEeuU16yNlkGpXw"/>
@@ -90,8 +109,39 @@ When an user requests a feature (through a role), the feature owner must approve
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_CnFU8NcmEeq-pdhod7KGaA" name="Event"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_Eqq9UNcmEeq-pdhod7KGaA" name="EventDetail"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CnFU8NcmEeq-pdhod7KGaA" name="Event">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_bppNQGEMEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_guUBAGEMEeuTWeG0CGc_KQ" type="_Lm1eMNcmEeq-pdhod7KGaA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_jCaKkGEMEeuTWeG0CGc_KQ" type="_rIRJUGEKEeuTWeG0CGc_KQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_5_lQ8GEMEeuTWeG0CGc_KQ" type="_rpTxoNclEeq-pdhod7KGaA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L9XsMGENEeuTWeG0CGc_KQ" type="_f3voENclEeq-pdhod7KGaA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_R-dr8GENEeuTWeG0CGc_KQ" name="date">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_aJTmcGENEeuTWeG0CGc_KQ" name="ipAddress">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eGLEoGENEeuTWeG0CGc_KQ" name="hostname">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_jTMjIGENEeuTWeG0CGc_KQ" name="details">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Eqq9UNcmEeq-pdhod7KGaA" name="EventDetail">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__RSlsGENEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_DfN-sGEOEeuTWeG0CGc_KQ" type="_CnFU8NcmEeq-pdhod7KGaA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Lhek8GEOEeuTWeG0CGc_KQ" name="fieldName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_R6G68GEOEeuTWeG0CGc_KQ" name="fieldValue">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Lm1eMNcmEeq-pdhod7KGaA" name="EventType">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_glHC4F61EeuTWeG0CGc_KQ" name="id">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
@@ -145,7 +195,7 @@ When an user requests a feature (through a role), the feature owner must approve
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gSjfoVcoEeuU16yNlkGpXw" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_gSktwVcoEeuU16yNlkGpXw" type="_CnFU8NcmEeq-pdhod7KGaA" association="_gShqcFcoEeuU16yNlkGpXw"/>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_gSkGsFcoEeuU16yNlkGpXw" type="_Lm1eMNcmEeq-pdhod7KGaA" aggregation="composite" association="_gShqcFcoEeuU16yNlkGpXw">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_gSkGsFcoEeuU16yNlkGpXw" type="_Lm1eMNcmEeq-pdhod7KGaA" aggregation="shared" association="_gShqcFcoEeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gSkGsVcoEeuU16yNlkGpXw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gSktwFcoEeuU16yNlkGpXw" value="1"/>
       </ownedEnd>
@@ -174,10 +224,10 @@ When an user requests a feature (through a role), the feature owner must approve
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xck7oFcoEeuU16yNlkGpXw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xclisFcoEeuU16yNlkGpXw" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_xcmJwVcoEeuU16yNlkGpXw" name="event" type="_CnFU8NcmEeq-pdhod7KGaA" association="_xckUkFcoEeuU16yNlkGpXw"/>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_xclisVcoEeuU16yNlkGpXw" name="eventdetail" type="_Eqq9UNcmEeq-pdhod7KGaA" aggregation="shared" association="_xckUkFcoEeuU16yNlkGpXw">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xclislcoEeuU16yNlkGpXw"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xcmJwFcoEeuU16yNlkGpXw" value="1"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xcmJwVcoEeuU16yNlkGpXw" type="_CnFU8NcmEeq-pdhod7KGaA" association="_xckUkFcoEeuU16yNlkGpXw"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xclisVcoEeuU16yNlkGpXw" type="_Eqq9UNcmEeq-pdhod7KGaA" aggregation="shared" association="_xckUkFcoEeuU16yNlkGpXw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_487zEGEKEeuTWeG0CGc_KQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_47PJ8GEKEeuTWeG0CGc_KQ" value="*"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_3UBQIFcoEeuU16yNlkGpXw" memberEnd="_3UCeQVcoEeuU16yNlkGpXw _3UDFUVcoEeuU16yNlkGpXw">
@@ -202,6 +252,15 @@ When an user requests a feature (through a role), the feature owner must approve
       <ownedAttribute xmi:type="uml:Property" xmi:id="_T6i5wVcrEeuU16yNlkGpXw" type="_hbnOkNclEeq-pdhod7KGaA" association="_T6hEkFcrEeuU16yNlkGpXw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T6mkIFcrEeuU16yNlkGpXw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T6pAYFcrEeuU16yNlkGpXw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_CJBhcGEGEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_E5GcYGEGEeuTWeG0CGc_KQ" name="date">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Q7M8UGEGEeuTWeG0CGc_KQ" name="keepAccess">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_KtpsYFcrEeuU16yNlkGpXw" memberEnd="_KtqTclcrEeuU16yNlkGpXw _KtyPQFcrEeuU16yNlkGpXw">
@@ -302,6 +361,22 @@ When an user requests a feature (through a role), the feature owner must approve
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_l3LEUV6zEeuTWeG0CGc_KQ" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rIRJUGEKEeuTWeG0CGc_KQ" name="EventStatus">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LCd1EGELEeuTWeG0CGc_KQ" name="id">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBigInteger"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Op510GELEeuTWeG0CGc_KQ" name="description">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_t2C-MGEKEeuTWeG0CGc_KQ" memberEnd="_t2GBgGEKEeuTWeG0CGc_KQ _t2GokmEKEeuTWeG0CGc_KQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_t2EzYGEKEeuTWeG0CGc_KQ" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_t2EzYWEKEeuTWeG0CGc_KQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_t2GokmEKEeuTWeG0CGc_KQ" type="_CnFU8NcmEeq-pdhod7KGaA" association="_t2C-MGEKEeuTWeG0CGc_KQ"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_t2GBgGEKEeuTWeG0CGc_KQ" type="_rIRJUGEKEeuTWeG0CGc_KQ" aggregation="shared" association="_t2C-MGEKEeuTWeG0CGc_KQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_9uGxIGEMEeuTWeG0CGc_KQ" client="_PwPZANclEeq-pdhod7KGaA" supplier="_f3voENclEeq-pdhod7KGaA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_V5mj8NclEeq-pdhod7KGaA" name="Business"/>
 </uml:Model>
