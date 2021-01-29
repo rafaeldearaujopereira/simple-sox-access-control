@@ -130,6 +130,43 @@ alter table version add constraint version_uk_logic unique (feature_id, version_
 alter table version add constraint version_fk_feature foreign key (feature_id) references feature (id);
 
 
+create table event (
+id bigint not null, 
+event_type_id smallint not null,
+event_status_id smallint not null, 
+feature_id bigint not null,
+user_id bigint null,
+event_date date not null,
+ip_address varchar(50) not null,
+host_name varchar(50) not null
+);
+
+alter table event add constraint event_pk primary key (id);
+
+alter table event add constraint event_fk_type foreign key (event_type_id) references event_type (id);
+
+alter table event add constraint event_fk_status foreign key (event_status_id) references event_status (id);
+
+alter table event add constraint event_fk_feature foreign key (feature_id) references feature (id);
+
+alter table event add constraint event fk_user foreign key (user_id) references system_user (id);
+
+
+
+create table event_detail (
+id bigint not null,
+event_id bigint not null, 
+field_name varchar(4000) not null,
+field_value varchar(4000) not null
+);
+
+alter table event_detail add constraint event_detail_pk primary key (id);
+
+alter table event_detail add constraint event_detail_fk_event foreign key (event_id) references event (id);
+
+
+
+
 
 
 create sequence user_seq;
@@ -139,3 +176,7 @@ create sequence feature_seq;
 create sequence role_seq;
 
 create sequence version_seq;
+
+create sequence event_seq;
+
+create sequence event_detail_seq;

@@ -42,7 +42,7 @@ public class Version {
 	@Column(name = "description")
 	private String description;
 
-	/** Date. */
+	/** Release date. */
 	@Column(name = "release_date")
 	private Date releaseDate;
 
