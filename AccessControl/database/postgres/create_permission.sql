@@ -35,3 +35,5 @@ grant select on version_seq to accessctl_user;
 grant select on event_seq to accessctl_user;
 
 grant select on event_detail_seq to accessctl_user;
+
+grant select on session_seq to accessctl_user;
