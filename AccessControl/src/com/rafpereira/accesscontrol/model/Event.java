@@ -11,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
 
 /**
  * The event registers a single action of an user while using the system.
@@ -46,13 +48,29 @@ public class Event {
 	@JoinColumn(name = "feature_id", referencedColumnName = "id")
 	private Feature feature;
 
+	/** The session that generated the event. */
+	@ManyToOne
+	@JoinColumn(name = "feature_id", referencedColumnName = "id")
+	private Session session;
+
 	/** Event date time. */
 	@Column(name = "event_date")
 	private Date eventDate;
 
 	/** The versions of the feature. */
-	@Transient
+	@OneToMany
+	@JoinColumn(name = "event_id", referencedColumnName = "id")
 	private List<EventDetail> details = new ArrayList<>();
+
+	/** Default, simple constructor. Required by persistence system. */
+	public Event() {
+	}
+
+	/** Creates a event using request's extra info. */
+	public Event(LogExtraInfo logInfo) {
+		this.eventDate = logInfo.getRequestDate();
+		this.session = logInfo.getSession();
+	}
 
 	public Long getId() {
 		return id;
@@ -86,12 +104,24 @@ public class Event {
 		this.feature = feature;
 	}
 
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
 	public Date getEventDate() {
 		return eventDate;
 	}
 
 	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
+	}
+
+	public List<EventDetail> getDetails() {
+		return details;
 	}
 
 	public void setDetails(List<EventDetail> details) {
