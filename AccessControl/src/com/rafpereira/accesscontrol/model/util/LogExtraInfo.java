@@ -21,6 +21,15 @@ public class LogExtraInfo {
 	private Session session;
 
 	private Event event;
+	
+	
+
+	public LogExtraInfo(String ipAddress, String hostName, String token) {
+		this.requestDate = new Date();
+		this.ipAddress = ipAddress;
+		this.hostName = hostName;
+		this.externalSessionId = token;
+	}
 
 	public Date getRequestDate() {
 		return requestDate;

@@ -25,7 +25,7 @@ import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
  * 
  * @author rafaeldearaujopereira
  */
-public abstract class AccessControlUtil {
+public class AccessControlUtil {
 
 	/** Map to avoid excessive queries on the database (for user mapping searches). */
 	private HashMap<String, User> usersByLogin = null;
