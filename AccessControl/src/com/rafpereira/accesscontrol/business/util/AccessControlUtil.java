@@ -48,7 +48,11 @@ public class AccessControlUtil {
 		List<User> users = query.getResultList();
 		User user = (users.size() == 1) ? users.get(0) : null;
 		logInfo.setUser(user);
-		registerLoginLogout(userLogin, logInfo, EventType.LOGIN);
+		if (user != null) {
+			registerLoginLogout(userLogin, logInfo, EventType.LOGIN);
+		} else {
+			registerInvalidAccess("LOGIN", logInfo);
+		}
 		return user;
 	}
 
@@ -81,6 +85,8 @@ public class AccessControlUtil {
 				eventDetail.setFieldValue(userLogin);
 				event.getDetails().add(eventDetail);
 				
+				logInfo.setSession(new com.rafpereira.accesscontrol.model.Session());
+				logInfo.getSession().setUser(getUserByLogin(userLogin));
 				logInfo.getSession().setStartDate(new Date());
 				session.save(logInfo.getSession());
 			} else {

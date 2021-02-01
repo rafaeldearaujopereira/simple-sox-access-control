@@ -152,7 +152,8 @@ id bigint not null,
 event_type_id smallint not null,
 event_status_id smallint not null, 
 feature_id bigint not null,
-session_id bigint null
+session_id bigint null,
+event_date date not null
 );
 
 alter table event add constraint event_pk primary key (id);

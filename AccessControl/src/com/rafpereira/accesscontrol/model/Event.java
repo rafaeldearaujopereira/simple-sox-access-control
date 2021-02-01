@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
 
@@ -50,11 +52,12 @@ public class Event {
 
 	/** The session that generated the event. */
 	@ManyToOne
-	@JoinColumn(name = "feature_id", referencedColumnName = "id")
+	@JoinColumn(name = "session_id", referencedColumnName = "id")
 	private Session session;
 
 	/** Event date time. */
 	@Column(name = "event_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date eventDate;
 
 	/** The versions of the feature. */
