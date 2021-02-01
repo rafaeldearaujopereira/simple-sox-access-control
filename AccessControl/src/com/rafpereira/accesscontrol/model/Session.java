@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The user's session (login to logout).
@@ -18,7 +20,7 @@ import javax.persistence.Table;
  * @author rafaeldearaujopereira
  */
 @Entity
-@Table(name = "event")
+@Table(name = "session")
 public class Session {
 
 	/** Id. */
@@ -29,6 +31,7 @@ public class Session {
 	private Long id;
 
 	/** Id of the session on an external system. */
+	@Column(name = "external_id")
 	private String externalId;
 
 	/** The user that owns the session. */
@@ -38,10 +41,12 @@ public class Session {
 
 	/** Session start time. */
 	@Column(name = "start_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 
 	/** Session end time. */
 	@Column(name = "end_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 
 	/** IP address. */

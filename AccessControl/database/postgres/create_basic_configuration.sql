@@ -24,4 +24,5 @@ insert into event_status (id, description) values (3, 'Error');
 insert into event_status (id, description) values (4, 'Invalid Form');
 
 
+
 commit;

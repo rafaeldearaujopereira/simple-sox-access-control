@@ -51,7 +51,7 @@ public class AccessControlUtil {
 		if (user != null) {
 			registerLoginLogout(userLogin, logInfo, EventType.LOGIN);
 		} else {
-			registerInvalidAccess("LOGIN", logInfo);
+			registerInvalidAccess("LOGIN", userLogin, logInfo);
 		}
 		return user;
 	}
@@ -84,11 +84,15 @@ public class AccessControlUtil {
 				eventDetail.setFieldName("userLogin");
 				eventDetail.setFieldValue(userLogin);
 				event.getDetails().add(eventDetail);
-				
-				logInfo.setSession(new com.rafpereira.accesscontrol.model.Session());
-				logInfo.getSession().setUser(getUserByLogin(userLogin));
-				logInfo.getSession().setStartDate(new Date());
-				session.save(logInfo.getSession());
+
+				com.rafpereira.accesscontrol.model.Session userSession = new com.rafpereira.accesscontrol.model.Session();
+				userSession.setUser(getUserByLogin(userLogin));
+				userSession.setStartDate(new Date());
+				userSession.setExternalId(logInfo.getExternalSessionId());
+				userSession.setIpAddress(logInfo.getIpAddress());
+				userSession.setHostName(logInfo.getHostName());
+				logInfo.setSession(userSession);
+				session.save(userSession);
 			} else {
 				logInfo.getSession().setEndDate(logInfo.getRequestDate());
 				session.saveOrUpdate(logInfo.getSession());
@@ -195,10 +199,18 @@ public class AccessControlUtil {
 	/**
 	 * Register an invalid access.
 	 * @param featureCode The code of the feature that the user tried to access
+	 * @param userLogin The user name for login events.
 	 * @param logInfo Additional info
 	 */
-	public void registerInvalidAccess(String featureCode, LogExtraInfo logInfo) {
-		registerEvent(featureCode, logInfo, EventType.INVALID_ACCESS, EventStatus.ERROR, null);
+	public void registerInvalidAccess(String featureCode, String userLogin, LogExtraInfo logInfo) {
+		ArrayList<EventDetail> details = new ArrayList<>();
+		if (userLogin != null) {
+			EventDetail eventDetail = new EventDetail();
+			eventDetail.setFieldName("userLogin");
+			eventDetail.setFieldValue(userLogin);
+			details.add(eventDetail);
+		}
+		registerEvent(featureCode, logInfo, EventType.INVALID_ACCESS, EventStatus.ERROR, details);
 	}
 	
 	/**

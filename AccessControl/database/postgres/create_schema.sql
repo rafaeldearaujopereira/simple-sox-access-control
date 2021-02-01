@@ -133,8 +133,8 @@ alter table version add constraint version_fk_feature foreign key (feature_id) r
 create table session (
 id bigint not null, 
 user_id bigint null,
-start_date date not null,
-end_date date not null,
+start_date timestamp not null,
+end_date timestamp null,
 ip_address varchar(50) not null,
 host_name varchar(50) not null,
 external_id varchar(50) null
@@ -151,9 +151,9 @@ create table event (
 id bigint not null, 
 event_type_id smallint not null,
 event_status_id smallint not null, 
-feature_id bigint not null,
+feature_id bigint null,
 session_id bigint null,
-event_date date not null
+event_date timestamp not null
 );
 
 alter table event add constraint event_pk primary key (id);
