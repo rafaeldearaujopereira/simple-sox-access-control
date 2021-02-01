@@ -1,5 +1,8 @@
 package com.rafpereira.accesscontrol.rest.service;
 
+import java.net.InetAddress;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +29,19 @@ public class LoginController {
 		// In this basic implementation, the password must be equal to the user name.
 		String token = null;
 		if (username.equals(password)) {
-			token = "token_for_" + username;
+			token = UUID.randomUUID().toString();
 		}
 		
 		if (token != null) {
 			String ipAddress = request.getRemoteAddr();
-			String hostName = request.getRemoteHost();
+			String hostName = request.getRemoteHost().toUpperCase();
+			if (ipAddress.equals("0:0:0:0:0:0:0:1") || ipAddress.equals("127.0.0.1")) {
+				try {
+					ipAddress = InetAddress.getLocalHost().getHostAddress();
+					hostName = InetAddress.getLocalHost().getHostName().toUpperCase();
+				} catch (Exception e) {}
+			}
+			
 			LogExtraInfo logInfo = new LogExtraInfo(ipAddress, hostName, token);
 			
 			AccessControlUtil accessControlUtil = new AccessControlUtil();
@@ -40,7 +50,6 @@ public class LoginController {
 				token = null;
 			}
 		}
-		
 		return token;
 	}
 }
