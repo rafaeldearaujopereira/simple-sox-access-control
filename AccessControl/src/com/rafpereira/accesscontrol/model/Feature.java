@@ -149,4 +149,16 @@ public class Feature {
 		this.versions = versions;
 	}
 
+	public boolean isFinal() {
+		return (this.children == null || this.children.size() == 0);
+	}
+	
+	public String getFeaturePath() {
+		if (this.parent != null) {
+			return this.parent.getFeaturePath() + " > " + name;
+		} else {
+			return name;
+		}
+	}
+	
 }

@@ -17,6 +17,7 @@ public abstract class CrudAccessControlUtil<T> extends AccessControlUtil {
 		try {
 			tx = session.beginTransaction();
 			saveInTransaction(t, session);
+			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null) {
@@ -39,6 +40,7 @@ public abstract class CrudAccessControlUtil<T> extends AccessControlUtil {
 		try {
 			tx = session.beginTransaction();
 			removeInTransaction(t, session);
+			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null) {
