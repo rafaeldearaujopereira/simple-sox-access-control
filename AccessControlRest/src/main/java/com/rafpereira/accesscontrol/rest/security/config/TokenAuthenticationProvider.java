@@ -1,6 +1,5 @@
 package com.rafpereira.accesscontrol.rest.security.config;
 
-import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -9,13 +8,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import com.rafpereira.accesscontrol.rest.UserData;
+import com.rafpereira.accesscontrol.rest.auth.api.ExternalIdAuthenticationService;
 import com.rafpereira.accesscontrol.rest.auth.api.UserAuthenticationService;
 
 @Component
 public class TokenAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
-
-	@NonNull
-	UserAuthenticationService auth;
 	
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
@@ -31,6 +28,10 @@ public class TokenAuthenticationProvider extends AbstractUserDetailsAuthenticati
 		if (token == null) {
 			token = "";
 		}
+		
+		System.out.println(token);
+		
+		UserAuthenticationService auth = new ExternalIdAuthenticationService();
 		
 		UserData user = auth.findByToken(token.toString());
 		if (user == null) {
