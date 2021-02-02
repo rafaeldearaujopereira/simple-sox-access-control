@@ -77,7 +77,6 @@ public class AccessControlUtil {
 			tx = session.beginTransaction();
 			Event event = new Event(logInfo);
 			event.setType(type);
-			event.setStatus((event.getSession() != null) ? EventStatus.OK : EventStatus.ERROR);
 			if (userLogin != null) {
 				EventDetail eventDetail = new EventDetail();
 				eventDetail.setEvent(event);
@@ -93,10 +92,12 @@ public class AccessControlUtil {
 				userSession.setHostName(logInfo.getHostName());
 				logInfo.setSession(userSession);
 				session.save(userSession);
+				event.setSession(userSession);
 			} else {
 				logInfo.getSession().setEndDate(logInfo.getRequestDate());
 				session.saveOrUpdate(logInfo.getSession());
 			}
+			event.setStatus((event.getSession() != null) ? EventStatus.OK : EventStatus.ERROR);
 			session.save(event);
 			for (EventDetail eventDetail : event.getDetails()) {
 				session.save(eventDetail);
@@ -168,12 +169,13 @@ public class AccessControlUtil {
 	 * Updates a registered event.
 	 * @param event Event
 	 */
-	public void registerEvent(String featureCode, LogExtraInfo logInfo, EventType type, EventStatus status, ArrayList<EventDetail> details) {
+	public Event registerEvent(String featureCode, LogExtraInfo logInfo, EventType type, EventStatus status, ArrayList<EventDetail> details) {
 		Session session = AccessControlSessionFactoryUtil.getInstance().getSession();
 		Transaction tx = null;
+		Event event = null;
 		try {
 			tx = session.beginTransaction();
-			Event event = new Event(logInfo);
+			event = new Event(logInfo);
 			event.setFeature(getFeatureByCode(featureCode));
 			event.setType(type);
 			event.setStatus(status);
@@ -194,20 +196,21 @@ public class AccessControlUtil {
 		} finally {
 			session.close();
 		}
+		return event;
 	}
 	
 	/**
 	 * Register an invalid access.
 	 * @param featureCode The code of the feature that the user tried to access
-	 * @param userLogin The user name for login events.
+	 * @param content The user name for login events, or session token for authenticated users trying to do an invalid access.
 	 * @param logInfo Additional info
 	 */
-	public void registerInvalidAccess(String featureCode, String userLogin, LogExtraInfo logInfo) {
+	public void registerInvalidAccess(String featureCode, String content, LogExtraInfo logInfo) {
 		ArrayList<EventDetail> details = new ArrayList<>();
-		if (userLogin != null) {
+		if (content != null) {
 			EventDetail eventDetail = new EventDetail();
-			eventDetail.setFieldName("userLogin");
-			eventDetail.setFieldValue(userLogin);
+			eventDetail.setFieldName(featureCode);
+			eventDetail.setFieldValue(content);
 			details.add(eventDetail);
 		}
 		registerEvent(featureCode, logInfo, EventType.INVALID_ACCESS, EventStatus.ERROR, details);

@@ -31,6 +31,11 @@ public class LogExtraInfo {
 		this.externalSessionId = token;
 	}
 
+	public LogExtraInfo(Session session) {
+		this.requestDate = new Date();
+		this.session = session;
+	}
+
 	public Date getRequestDate() {
 		return requestDate;
 	}
