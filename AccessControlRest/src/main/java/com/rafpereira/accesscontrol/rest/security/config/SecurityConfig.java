@@ -1,5 +1,7 @@
 package com.rafpereira.accesscontrol.rest.security.config;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +49,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.formLogin().disable()
 			.httpBasic().disable()
-			.logout().disable();
+			.logout(logout -> logout.permitAll().logoutSuccessHandler((request, response, authentication) -> {
+				response.setStatus(HttpServletResponse.SC_OK);
+			}));
 	}
 	
 	@Bean

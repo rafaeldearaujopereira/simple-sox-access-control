@@ -1,6 +1,5 @@
 package com.rafpereira.accesscontrol.rest.service;
 
-import java.net.InetAddress;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rafpereira.accesscontrol.business.util.AccessControlUtil;
 import com.rafpereira.accesscontrol.model.User;
 import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
+import com.rafpereira.accesscontrol.rest.security.config.SessionTokenUtil;
 
 @RestController
 public class LoginController {
@@ -33,16 +33,7 @@ public class LoginController {
 		}
 		
 		if (token != null) {
-			String ipAddress = request.getRemoteAddr();
-			String hostName = request.getRemoteHost().toUpperCase();
-			if (ipAddress.equals("0:0:0:0:0:0:0:1") || ipAddress.equals("127.0.0.1")) {
-				try {
-					ipAddress = InetAddress.getLocalHost().getHostAddress();
-					hostName = InetAddress.getLocalHost().getHostName().toUpperCase();
-				} catch (Exception e) {}
-			}
-			
-			LogExtraInfo logInfo = new LogExtraInfo(ipAddress, hostName, token);
+			LogExtraInfo logInfo = SessionTokenUtil.createTrackingLogInfo(request, token);
 			
 			AccessControlUtil accessControlUtil = new AccessControlUtil();
 			User user = accessControlUtil.login(username, logInfo);
@@ -52,4 +43,5 @@ public class LoginController {
 		}
 		return token;
 	}
+
 }

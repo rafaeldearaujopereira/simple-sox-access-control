@@ -20,5 +20,20 @@ public class FeatureController extends CrudController<Feature>  {
 	protected CrudAccessControlUtil<Feature> getCrudUtil() {
 		return new FeatureUtil();
 	}
+
+	@Override
+	public String getNewItemFeatureCode() {
+		return "NEW_FEATURE";
+	}
+
+	@Override
+	public String getUpdateItemFeatureCode() {
+		return "UPDATE_FEATURE";
+	}
+
+	@Override
+	protected Long getItemId(Feature feature) {
+		return feature.getId();
+	}
 	
 }
