@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rafpereira.accesscontrol.business.util.AccessControlUtil;
@@ -37,8 +38,8 @@ public abstract class CrudController<T> {
 	protected abstract Long getItemId(T t);
 
 	@PostMapping
+	@PutMapping
 	public Long saveItem(T t) {
-		
 		String featureCode = getNewItemFeatureCode();
 		EventType type = EventType.CREATE;
 		if (getItemId(t) != null) {
