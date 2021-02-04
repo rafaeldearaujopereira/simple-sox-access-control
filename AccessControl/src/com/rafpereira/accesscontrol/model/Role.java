@@ -20,7 +20,6 @@ import javax.persistence.Table;
 
 /**
  * The role that a user can performs in the organization.
- * 
  * @author rafaeldearaujopereira
  */
 @Entity

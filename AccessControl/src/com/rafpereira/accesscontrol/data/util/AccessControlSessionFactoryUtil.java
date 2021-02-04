@@ -19,13 +19,13 @@ import com.rafpereira.data.util.SessionFactoryUtil;
 
 public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 
-	/**
-	 * The current implementation (for the user system).
-	 */
+	/** The current implementation (for the user system). */
 	protected static SessionFactoryUtil sessionFactoryUtil;
 
+	/** Session factory. */
 	private static SessionFactory factory;
 	
+	/** Session registry. */
 	private static ServiceRegistry serviceRegistry;
 	
 	/**
@@ -36,6 +36,10 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 		return sessionFactoryUtil;
 	}
 	
+	/**
+	 * Obtains the session factory, or creates it.
+	 * @return The session factory.
+	 */
 	private static SessionFactory getSessionFactory() {
 		if (factory == null && sessionFactoryUtil != null) {
 			Configuration config = sessionFactoryUtil.getConfiguration();
@@ -45,11 +49,19 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 		return factory;
 	}
 	
+	/**
+	 * Obtains a session from the session factory.
+	 * return A Hibernate session.
+	 */
 	@Override
 	public Session getSession() {
 		return getSessionFactory().openSession();
 	}
 
+	/**
+	 * Configures the Hibernate.
+	 * return The Hibernate configuration.
+	 */
 	@Override
 	public Configuration getConfiguration() {
 		Configuration config = new Configuration();
@@ -67,12 +79,19 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 		return config;
 	}
 
+	/**
+	 * Constructor, that initializes the Singleton.
+	 */
 	public AccessControlSessionFactoryUtil() {
 		if (sessionFactoryUtil == null) {
 			sessionFactoryUtil = this;
 		}
 	}
 
+	/**
+	 * Obtains the session factory.
+	 * return Session factory.
+	 */
 	@Override
 	protected SessionFactory getFactory() {
 		return factory;

@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 /**
  * The version of a feature (usually used for systems).
- * 
  * @author rafaeldearaujopereira
  */
 @Entity

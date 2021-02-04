@@ -6,24 +6,39 @@ import com.rafpereira.accesscontrol.model.Event;
 import com.rafpereira.accesscontrol.model.Session;
 import com.rafpereira.accesscontrol.model.User;
 
+/**
+ * A bean that contains the information used to create and update events or sessions.
+ * @author rafaeldearaujopereira
+ */
 public class LogExtraInfo {
 
+	/** The request date and time. */
 	private Date requestDate;
 
+	/** Ip Address. */
 	private String ipAddress;
 
+	/** Host name. */
 	private String hostName;
 
+	/** Session Id or Token from an external system. */
 	private String externalSessionId;
 
+	/** User. */
 	private User user;
 	
+	/** Session. */
 	private Session session;
 
+	/** Event. */
 	private Event event;
 	
-	
-
+	/**
+	 * Constructor that receives information required to create a session.
+	 * @param ipAddress Id address.
+	 * @param hostName Host name.
+	 * @param token External Id.
+	 */
 	public LogExtraInfo(String ipAddress, String hostName, String token) {
 		this.requestDate = new Date();
 		this.ipAddress = ipAddress;
@@ -31,6 +46,10 @@ public class LogExtraInfo {
 		this.externalSessionId = token;
 	}
 
+	/**
+	 * Constructor that receives an already created session.
+	 * @param session Session.
+	 */
 	public LogExtraInfo(Session session) {
 		this.requestDate = new Date();
 		this.session = session;

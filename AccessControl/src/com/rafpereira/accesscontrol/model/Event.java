@@ -21,7 +21,6 @@ import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
 
 /**
  * The event registers a single action of an user while using the system.
- * 
  * @author rafaeldearaujopereira
  */
 @Entity

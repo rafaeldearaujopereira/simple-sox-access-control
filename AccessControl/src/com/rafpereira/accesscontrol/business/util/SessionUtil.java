@@ -9,6 +9,10 @@ import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.Session;
 import com.rafpereira.data.util.SessionFactoryUtil;
 
+/**
+ * The CRUD Util class for Session.
+ * @author rafaeldearaujopereira
+ */
 public class SessionUtil extends CrudAccessControlUtil<Session> {
 
 	@Override

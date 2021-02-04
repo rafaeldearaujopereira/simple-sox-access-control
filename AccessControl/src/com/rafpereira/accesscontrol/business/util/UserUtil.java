@@ -11,6 +11,10 @@ import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.User;
 import com.rafpereira.data.util.SessionFactoryUtil;
 
+/**
+ * The CRUD Util class for User.
+ * @author rafaeldearaujopereira
+ */
 public class UserUtil extends CrudAccessControlUtil<User> {
 
 	@Override

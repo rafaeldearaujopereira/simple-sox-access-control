@@ -16,7 +16,6 @@ import javax.persistence.TemporalType;
 
 /**
  * The user's session (login to logout).
- * 
  * @author rafaeldearaujopereira
  */
 @Entity

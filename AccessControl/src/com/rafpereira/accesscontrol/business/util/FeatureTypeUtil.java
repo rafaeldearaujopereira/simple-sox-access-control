@@ -11,6 +11,10 @@ import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.FeatureType;
 import com.rafpereira.data.util.SessionFactoryUtil;
 
+/**
+ * The CRUD Util class for Feature Type.
+ * @author rafaeldearaujopereira
+ */
 public class FeatureTypeUtil extends CrudAccessControlUtil<FeatureType> {
 
 	@Override

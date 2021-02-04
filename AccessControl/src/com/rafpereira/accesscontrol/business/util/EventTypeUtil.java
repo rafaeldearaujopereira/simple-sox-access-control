@@ -11,6 +11,10 @@ import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.EventType;
 import com.rafpereira.data.util.SessionFactoryUtil;
 
+/**
+ * The CRUD Util class for Event Type.
+ * @author rafaeldearaujopereira
+ */
 public class EventTypeUtil extends CrudAccessControlUtil<EventType> {
 
 	@Override

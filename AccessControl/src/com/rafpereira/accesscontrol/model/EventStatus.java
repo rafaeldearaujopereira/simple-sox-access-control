@@ -7,7 +7,6 @@ import javax.persistence.Table;
 
 /**
  * The status of an event.
- * 
  * @author rafaeldearaujopereira
  */
 @Entity

@@ -12,7 +12,7 @@ public abstract class SessionFactoryUtil {
 
 	/**
 	 * Obtains a Hibernate session.
-	 * @return
+	 * @return The Hibernate session.
 	 */
 	public abstract Session getSession();
 
