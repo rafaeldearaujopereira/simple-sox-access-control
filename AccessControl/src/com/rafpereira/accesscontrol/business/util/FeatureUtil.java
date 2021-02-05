@@ -64,7 +64,7 @@ public class FeatureUtil extends CrudAccessControlUtil<Feature> {
 				return o1.getFeaturePath().compareTo(o2.getFeaturePath());
 			}
 		});
-		List<Feature> features = listByFilter(null);
+		List<Feature> features = list();
 		for (Feature feature : features) {
 			if (feature.getParent() != null) {
 				feature.getParent().getChildren().add(feature);

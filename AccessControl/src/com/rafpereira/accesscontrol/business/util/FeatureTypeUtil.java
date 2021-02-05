@@ -50,5 +50,23 @@ public class FeatureTypeUtil extends CrudAccessControlUtil<FeatureType> {
 	public SessionFactoryUtil getSessionFactoryInstance() {
 		return AccessControlSessionFactoryUtil.getInstance();
 	}
+	
+	/**
+	 * Disable the save method.
+	 */
+	@Override
+	public boolean save(FeatureType t) {
+		return false;
+	}
+
+	/**
+	 * Disable the remove method.
+	 */
+	@Override
+	public boolean remove(FeatureType t) {
+		return false;
+	}
+	
+
 
 }

@@ -51,4 +51,21 @@ public class EventTypeUtil extends CrudAccessControlUtil<EventType> {
 		return AccessControlSessionFactoryUtil.getInstance();
 	}
 
+	/**
+	 * Disable the save method.
+	 */
+	@Override
+	public boolean save(EventType t) {
+		return false;
+	}
+
+	/**
+	 * Disable the remove method.
+	 */
+	@Override
+	public boolean remove(EventType t) {
+		return false;
+	}
+	
+
 }
