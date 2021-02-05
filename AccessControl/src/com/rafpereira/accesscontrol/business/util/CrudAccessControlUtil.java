@@ -97,6 +97,14 @@ public abstract class CrudAccessControlUtil<T> extends AccessControlUtil {
 	public List<T> listByFilter(T filterObj) {
 		return listByFilter(filterObj, false);
 	}
+	
+	/**
+	 * List objects (default search without filter).
+	 * @return The list of objects found.
+	 */
+	public List<T> list() {
+		return listByFilter(null);
+	}
 
 	/**
 	 * Obtains the object for an update form. Must override when the process must load related items.
