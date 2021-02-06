@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.web.RedirectStrategy;
 
+/**
+ * A redirect strategy that does nothing.
+ * @author rafaeldearaujopereira
+ */
 public class NoRedirectStrategy implements RedirectStrategy {
 
 	@Override

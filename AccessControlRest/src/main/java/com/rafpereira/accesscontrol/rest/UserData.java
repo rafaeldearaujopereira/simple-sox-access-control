@@ -1,3 +1,4 @@
+
 package com.rafpereira.accesscontrol.rest;
 
 import java.util.ArrayList;
@@ -8,6 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.rafpereira.accesscontrol.model.User;
 
+/**
+ * Implementation of User Details that extends Access Control's User.
+ * @author rafaeldearaujopereira
+ *
+ */
 public class UserData extends User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
