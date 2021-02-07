@@ -37,10 +37,24 @@ public class UserController extends CrudController<User> {
 	public String getUpdateItemFeatureCode() {
 		return "AC_UPDATE_USER";
 	}
+	
+	@Override
+	public String getSearchFeatureCode() {
+		return "AC_SEARCH_USER";
+	}
 
 	@Override
 	protected Long getItemId(User user) {
 		return user.getId();
 	}
+
+	@Override
+	protected User getNewItem(Long id) {
+		User user = new User();
+		user.setId(id);
+		return user;
+	}
+	
+	
 
 }
