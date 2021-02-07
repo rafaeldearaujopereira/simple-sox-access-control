@@ -19,6 +19,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * User of a system.
  * @author rafaeldearaujopereira
@@ -111,6 +113,7 @@ public class User {
 		this.manager = manager;
 	}
 
+	@JsonIgnore
 	public List<Role> getRoles() {
 		return roles;
 	}

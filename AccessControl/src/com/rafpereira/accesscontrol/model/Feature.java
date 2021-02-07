@@ -15,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * A feature (a system, or a menu, or a button in a window).
  * @author rafaeldearaujopereira
@@ -117,6 +119,7 @@ public class Feature {
 		this.description = description;
 	}
 
+	@JsonIgnore
 	public List<Role> getRoles() {
 		return roles;
 	}

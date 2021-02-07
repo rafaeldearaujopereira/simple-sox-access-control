@@ -18,7 +18,7 @@ import com.rafpereira.data.util.SessionFactoryUtil;
 public class UserUtil extends CrudAccessControlUtil<User> {
 
 	@Override
-	public List<User> listByFilter(User UserFilter, boolean loadChildren) {
+	public List<User> listByFilter(User userFilter, boolean loadChildren) {
 
 		Session session = getSessionFactoryInstance().getSession();
 		
@@ -27,10 +27,14 @@ public class UserUtil extends CrudAccessControlUtil<User> {
 		sb.append("from User u ");
 		sb.append("where 1 = 1 ");
 		
-		if (UserFilter != null) {
-			if (UserFilter.getName() != null && !UserFilter.getName().trim().equals("")) {
+		if (userFilter != null) {
+			if (userFilter.getId() != null) {
+				sb.append("and u.id = ?" + params.size() + " ");
+				params.add(userFilter.getId());
+			}
+			if (userFilter.getName() != null && !userFilter.getName().trim().equals("")) {
 				sb.append("and upper(u.name) like ?" + params.size() + " ");
-				params.add("%" + UserFilter.getName().trim().toUpperCase() + "%");
+				params.add("%" + userFilter.getName().trim().toUpperCase() + "%");
 			}
 		}
 		

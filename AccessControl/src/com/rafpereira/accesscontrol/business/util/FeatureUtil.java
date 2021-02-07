@@ -31,6 +31,10 @@ public class FeatureUtil extends CrudAccessControlUtil<Feature> {
 		sb.append("where 1 = 1 ");
 		
 		if (featureFilter != null) {
+			if (featureFilter.getId() != null) {
+				sb.append("and f.id = ?" + params.size() + " ");
+				params.add(featureFilter.getId());
+			}
 			if (featureFilter.getDescription() != null && !featureFilter.getDescription().trim().equals("")) {
 				sb.append("and upper(f.description) like ?" + params.size() + " ");
 				params.add("%" + featureFilter.getDescription().trim().toUpperCase() + "%");
@@ -45,6 +49,9 @@ public class FeatureUtil extends CrudAccessControlUtil<Feature> {
 		}
 		List<Feature> items = query.getResultList();
 		session.close();
+		if (loadChildren) {
+			
+		}
 		return items;
 	}
 
