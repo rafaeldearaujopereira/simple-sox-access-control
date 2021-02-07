@@ -233,5 +233,38 @@ public class AccessControlUtil {
 	public void registerAccess(String featureCode, LogExtraInfo logInfo) {
 		registerEvent(featureCode, logInfo, EventType.ACCESS, EventStatus.OK, null);
 	}
+
+	/**
+	 * The main process to allow users on a feature. Verifies the acess of user's roles.
+	 * @param featureCode Feature code
+	 * @param session Session
+	 * @return True when the user has the access
+	 */
+	public boolean hasAccess(String featureCode, com.rafpereira.accesscontrol.model.Session userSession) {
+		Feature feature = getFeatureByCode(featureCode);
+		if (feature == null) {
+			return false;
+		}
+
+		Session session = AccessControlSessionFactoryUtil.getInstance().getSession();
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("select distinct 1 ");
+		sb.append("from User u ");
+		sb.append("join u.roles r ");
+		sb.append("join r.features f ");
+		sb.append("where ");
+		sb.append("u.id = :userId ");
+		sb.append("and f.id = :featureId ");
+		
+		TypedQuery<Integer> query = session.createQuery(sb.toString(), Integer.class);
+		query.setParameter("userId", userSession.getUser().getId());
+		query.setParameter("featureId", feature.getId());
+		
+		List<Integer> resultExists = query.getResultList();
+		session.close();
+
+		return (resultExists != null && resultExists.size() > 0);
+	}
 	
 }
