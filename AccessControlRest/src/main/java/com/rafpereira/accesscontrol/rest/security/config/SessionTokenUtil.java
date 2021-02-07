@@ -26,12 +26,7 @@ public class SessionTokenUtil {
 	 * @return Session (Access Control)
 	 */
 	public static Session getSessionByToken(HttpServletRequest request) {
-		String param = request.getHeader(HttpHeaders.AUTHORIZATION);
-		if (param == null) {
-			return null;
-		}
-		String token = (param.startsWith(BEARER)) ? param.substring(BEARER.length()) : param;
-		token = token.trim();
+		String token = getToken(request);
 
 		Session sessionFilter = new Session();
 		sessionFilter.setExternalId(token);
@@ -44,6 +39,21 @@ public class SessionTokenUtil {
 			session = sessions.get(0);
 		}
 		return session;
+	}
+
+	/**
+	 * Obtains token from request.
+	 * @param request Request
+	 * @return Token
+	 */
+	public static String getToken(HttpServletRequest request) {
+		String param = request.getHeader(HttpHeaders.AUTHORIZATION);
+		if (param == null) {
+			return null;
+		}
+		String token = (param.startsWith(BEARER)) ? param.substring(BEARER.length()) : param;
+		token = token.trim();
+		return token;
 	}
 	
 	/**

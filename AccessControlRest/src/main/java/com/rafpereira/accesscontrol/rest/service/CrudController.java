@@ -95,8 +95,10 @@ public abstract class CrudController<T> {
 		LogExtraInfo logInfo = new LogExtraInfo(SessionTokenUtil.getSessionByToken(request));
 		ArrayList<EventDetail> details = extractDetails(t, null);
 
-		// TODO check if the user has the "grant" to perform the intended save or
-		// update. If not, registers an invalid access event.
+		if (!accessControlUtil.hasAccess(featureCode, logInfo.getSession())) {
+			accessControlUtil.registerInvalidAccess(request.getRequestURI(), SessionTokenUtil.getToken(request), logInfo);
+			return null;
+		}
 
 		Event event = accessControlUtil.registerEvent(featureCode, logInfo, type, EventStatus.CREATED, details);
 
