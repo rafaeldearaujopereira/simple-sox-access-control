@@ -405,7 +405,13 @@ When an user requests a feature (through a role), the feature owner must approve
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_V5mj8NclEeq-pdhod7KGaA" name="Business"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_L2_OcGpwEeu0nPHrYJAoVA" name="RestServices">
-    <packagedElement xmi:type="uml:Class" xmi:id="_bd7uIGpwEeu0nPHrYJAoVA" name="CrudController" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bd7uIGpwEeu0nPHrYJAoVA" name="CrudController" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gxQwQGsxEeu0nPHrYJAoVA" name="request"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_mTNV4GsxEeu0nPHrYJAoVA" name="crudUtil" type="_l9akwGpwEeu0nPHrYJAoVA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BGKbAGsyEeu0nPHrYJAoVA" name="saveItem" concurrency="concurrent">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_BGKbAWsyEeu0nPHrYJAoVA" name="t"/>
+      </ownedOperation>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_g4i8sGpwEeu0nPHrYJAoVA" name="LoginController"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_ile_oGpwEeu0nPHrYJAoVA" name="LogoutController"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_l9akwGpwEeu0nPHrYJAoVA" name="CrudAccessControlUtil" isAbstract="true"/>
