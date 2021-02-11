@@ -411,6 +411,10 @@ When an user requests a feature (through a role), the feature owner must approve
       <ownedOperation xmi:type="uml:Operation" xmi:id="_BGKbAGsyEeu0nPHrYJAoVA" name="saveItem" concurrency="concurrent">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_BGKbAWsyEeu0nPHrYJAoVA" name="t"/>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_zCjf0GwBEeu0nPHrYJAoVA" name="search">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zCjf0WwBEeu0nPHrYJAoVA" name="t"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_03BHEGwBEeu0nPHrYJAoVA" name="list"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_g4i8sGpwEeu0nPHrYJAoVA" name="LoginController"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_ile_oGpwEeu0nPHrYJAoVA" name="LogoutController"/>
