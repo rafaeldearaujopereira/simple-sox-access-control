@@ -420,7 +420,17 @@ When an user requests a feature (through a role), the feature owner must approve
     <packagedElement xmi:type="uml:Class" xmi:id="_ile_oGpwEeu0nPHrYJAoVA" name="LogoutController"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_l9akwGpwEeu0nPHrYJAoVA" name="CrudAccessControlUtil" isAbstract="true"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_ovK6sGpwEeu0nPHrYJAoVA" client="_bd7uIGpwEeu0nPHrYJAoVA" supplier="_l9akwGpwEeu0nPHrYJAoVA"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_uS96cGpwEeu0nPHrYJAoVA" name="AccessControlUtil"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_uS96cGpwEeu0nPHrYJAoVA" name="AccessControlUtil">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_KJABcGzHEeu0nPHrYJAoVA" name="login">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_KJABcWzHEeu0nPHrYJAoVA" name="userLogin">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_b8aYsGzHEeu0nPHrYJAoVA" name="logInfo" type="_QOqYIGzHEeu0nPHrYJAoVA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_j8EW4GzHEeu0nPHrYJAoVA" name="logout">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_j8EW4WzHEeu0nPHrYJAoVA" name="logInfo" type="_QOqYIGzHEeu0nPHrYJAoVA"/>
+      </ownedOperation>
+    </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_xLUAkGpwEeu0nPHrYJAoVA" client="_bd7uIGpwEeu0nPHrYJAoVA" supplier="_uS96cGpwEeu0nPHrYJAoVA"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_zVupsGpwEeu0nPHrYJAoVA" name="UserController">
       <generalization xmi:type="uml:Generalization" xmi:id="_2HYR8GpwEeu0nPHrYJAoVA" general="_bd7uIGpwEeu0nPHrYJAoVA"/>
@@ -435,5 +445,6 @@ When an user requests a feature (through a role), the feature owner must approve
     <packagedElement xmi:type="uml:Class" xmi:id="_74XZIGpwEeu0nPHrYJAoVA" name="FeatureUtil">
       <generalization xmi:type="uml:Generalization" xmi:id="_SL5soGpxEeu0nPHrYJAoVA" general="_l9akwGpwEeu0nPHrYJAoVA"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QOqYIGzHEeu0nPHrYJAoVA" name="LogExtraInfo"/>
   </packagedElement>
 </uml:Model>
