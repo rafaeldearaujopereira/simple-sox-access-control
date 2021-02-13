@@ -9,6 +9,8 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.Event;
@@ -27,6 +29,8 @@ import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
  */
 public class AccessControlUtil {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	/** Map to avoid excessive queries on the database (for user mapping searches). */
 	private HashMap<String, User> usersByLogin = null;
 	
@@ -41,6 +45,7 @@ public class AccessControlUtil {
 	 * @return The user (when exists)
 	 */
 	public User login(String userLogin, LogExtraInfo logInfo) {
+		logger.info("login attempt: {}", userLogin);
 		Session session = AccessControlSessionFactoryUtil.getInstance().getSession();
 		TypedQuery<User> query = session.createQuery("from User u where u.login = :login and u.active = :active", User.class);
 		query.setParameter("login", userLogin);
@@ -49,8 +54,10 @@ public class AccessControlUtil {
 		User user = (users.size() == 1) ? users.get(0) : null;
 		logInfo.setUser(user);
 		if (user != null) {
+			logger.info("login successful: {}", userLogin);
 			registerLoginLogout(userLogin, logInfo, EventType.LOGIN);
 		} else {
+			logger.info("login invalid: {}", userLogin);
 			registerInvalidAccess("LOGIN", userLogin, logInfo);
 		}
 		return user;
@@ -61,6 +68,7 @@ public class AccessControlUtil {
 	 * @param logInfo Additional info
 	 */
 	public void logout(LogExtraInfo logInfo) {
+		logger.info("logout for session: {}", logInfo.getSession().getExternalId());
 		registerLoginLogout(null, logInfo, EventType.LOGOUT);
 	}
 	
@@ -104,6 +112,7 @@ public class AccessControlUtil {
 			}
 			tx.commit();
 		} catch (Exception e) {
+			logger.error("exception when registering a login/logout event", e);
 			e.printStackTrace();
 			if (tx != null) tx.rollback();
 		} finally {
@@ -158,6 +167,7 @@ public class AccessControlUtil {
 			session.saveOrUpdate(event);
 			tx.commit();
 		} catch (Exception e) {
+			logger.error("exception when updating an event", e);
 			e.printStackTrace();
 			if (tx != null) tx.rollback();
 		} finally {
@@ -191,6 +201,7 @@ public class AccessControlUtil {
 			session.saveOrUpdate(event);
 			tx.commit();
 		} catch (Exception e) {
+			logger.error("exception when registering an event", e);
 			e.printStackTrace();
 			if (tx != null) tx.rollback();
 		} finally {
