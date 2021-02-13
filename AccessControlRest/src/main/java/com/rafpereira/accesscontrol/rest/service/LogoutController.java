@@ -10,9 +10,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rafpereira.accesscontrol.business.util.SessionUtil;
+import com.rafpereira.accesscontrol.business.util.AccessControlUtil;
 import com.rafpereira.accesscontrol.model.Session;
 import com.rafpereira.accesscontrol.model.User;
+import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
 import com.rafpereira.accesscontrol.rest.security.config.SessionTokenUtil;
 
 @RestController
@@ -22,13 +23,13 @@ public class LogoutController {
 	private HttpServletRequest request;
 
 	@GetMapping("/logout")
-	void logout(@AuthenticationPrincipal final User user) {
-
-		SessionUtil sessionUtil = new SessionUtil();
+	public void logout(@AuthenticationPrincipal final User user) {
+		AccessControlUtil accessControlUtil = new AccessControlUtil();
 		Session sessionLogout = SessionTokenUtil.getSessionByToken(request);
 		if (sessionLogout != null) {
-			sessionLogout.setEndDate(new Date());
-			sessionUtil.save(sessionLogout);
+			LogExtraInfo logInfo = new LogExtraInfo(sessionLogout);
+			logInfo.setRequestDate(new Date());
+			accessControlUtil.logout(logInfo);
 		} else {
 			throw new BadCredentialsException("Token not found or session expired");
 		}
