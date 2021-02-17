@@ -4,6 +4,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rafpereira.accesscontrol.base.rest.service.CrudController;
 import com.rafpereira.accesscontrol.business.util.CrudAccessControlUtil;
 import com.rafpereira.accesscontrol.business.util.FeatureUtil;
 import com.rafpereira.accesscontrol.model.Feature;

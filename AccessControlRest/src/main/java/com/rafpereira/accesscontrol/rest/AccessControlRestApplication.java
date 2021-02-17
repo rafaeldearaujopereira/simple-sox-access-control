@@ -11,7 +11,7 @@ import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
  * The Spring Security magic was inspired on Jérôme Loisel's post: https://octoperf.com/blog/2018/03/08/securing-rest-api-spring-security. Thank you Jérôme.
  * @author rafaeldearaujopereira
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.rafpereira"})
 public class AccessControlRestApplication {
 
 	/**
