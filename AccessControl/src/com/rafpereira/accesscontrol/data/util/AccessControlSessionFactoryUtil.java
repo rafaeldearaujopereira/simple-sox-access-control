@@ -65,7 +65,7 @@ public class AccessControlSessionFactoryUtil extends SessionFactoryUtil {
 	@Override
 	public Configuration getConfiguration() {
 		Configuration config = new Configuration();
-		config.configure("/com/rafpereira/accesscontrol/config/hibernate.cfg.xml");
+		config.configure("classpath:/com/rafpereira/accesscontrol/config/hibernate.cfg.xml");
 		config.addAnnotatedClass(FeatureType.class);
 		config.addAnnotatedClass(EventType.class);
 		config.addAnnotatedClass(User.class);
