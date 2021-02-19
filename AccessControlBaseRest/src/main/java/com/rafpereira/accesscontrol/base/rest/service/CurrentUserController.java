@@ -20,6 +20,10 @@ import com.rafpereira.accesscontrol.model.User;
 import com.rafpereira.accesscontrol.rest.auth.api.UserAuthenticationService;
 import com.rafpereira.accesscontrol.rest.security.config.SessionTokenUtil;
 
+/**
+ * Service to get info about the current user.
+ * @author rafaeldearaujopereira
+ */
 @RestController
 @RequestMapping("/current-user")
 public class CurrentUserController {

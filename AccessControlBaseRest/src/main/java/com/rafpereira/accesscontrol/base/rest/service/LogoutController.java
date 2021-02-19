@@ -16,10 +16,15 @@ import com.rafpereira.accesscontrol.model.User;
 import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
 import com.rafpereira.accesscontrol.rest.security.config.SessionTokenUtil;
 
+/**
+ * Service the enables the Logout (as it is need to log the audit info).
+ * 
+ * @author rafaeldearaujopereira
+ */
 @RestController
 public class LogoutController {
 
-	@Autowired 
+	@Autowired
 	private HttpServletRequest request;
 
 	@GetMapping("/logout")
@@ -33,6 +38,6 @@ public class LogoutController {
 		} else {
 			throw new BadCredentialsException("Token not found or session expired");
 		}
-	
+
 	}
 }

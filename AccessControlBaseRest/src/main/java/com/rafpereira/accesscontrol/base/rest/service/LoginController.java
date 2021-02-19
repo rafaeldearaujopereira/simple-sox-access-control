@@ -14,6 +14,10 @@ import com.rafpereira.accesscontrol.model.User;
 import com.rafpereira.accesscontrol.model.util.LogExtraInfo;
 import com.rafpereira.accesscontrol.rest.security.config.SessionTokenUtil;
 
+/**
+ * Service the enables the Login.
+ * @author rafaeldearaujopereira
+ */
 @RestController
 public class LoginController {
 
