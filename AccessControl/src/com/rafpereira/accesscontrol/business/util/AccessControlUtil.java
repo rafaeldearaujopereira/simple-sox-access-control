@@ -277,5 +277,70 @@ public class AccessControlUtil {
 
 		return (resultExists != null && resultExists.size() > 0);
 	}
+
+	/**
+	 * Obtains the feature tree (considering the roles of the user).
+	 * @param featureCode Feature code
+	 * @param session Session
+	 * @return Features tree (menu)
+	 */
+	public List<Feature> getSystemMenu(String featureCode, com.rafpereira.accesscontrol.model.Session userSession) {
+		if (getFeatureByCode(featureCode) == null) {
+			return new ArrayList<Feature>();
+		}
+
+		Session session = AccessControlSessionFactoryUtil.getInstance().getSession();
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("select r.features ");
+		sb.append("from User u ");
+		sb.append("join u.roles r ");
+		sb.append("join r.features f ");
+		sb.append("where ");
+		sb.append("u.id = :userId ");
+		
+		TypedQuery<Feature> query = session.createQuery(sb.toString(), Feature.class);
+		query.setParameter("userId", userSession.getUser().getId());
+		
+		List<Feature> userFeatures = new ArrayList<>();
+		List<Feature> firstLevelFeatures = new ArrayList<>();
+		List<Feature> finalFeatures = new ArrayList<>();
+		{
+			for (Feature feature : query.getResultList()) {
+				Feature current = feature;
+				List<Feature> featuresPath = new ArrayList<>();
+				while (current.getParent() != null) {
+					featuresPath.add(current);
+					if (current.getParent().getCode().equals(featureCode)) {
+						userFeatures.addAll(featuresPath);
+						firstLevelFeatures.add(current);
+						finalFeatures.add(feature);
+					} else {
+						current = current.getParent();
+					}
+				}
+			}
+			for (Feature feature : userFeatures) {
+				session.evict(feature);
+				feature.setChildren(new ArrayList<>());
+			}
+			for (Feature firstLevel : firstLevelFeatures) {
+				firstLevel.setParent(null);
+			}
+			
+			for (Feature feature : finalFeatures) {
+				Feature current = feature;
+				while (current != null && current.getParent() != null) {
+					Feature parent = current.getParent();
+					parent.getChildren().add(current);
+					current.setParent(null);
+					current = parent;
+				}
+			}
+			session.close();
+		}
+		return firstLevelFeatures;
+	}
+
 	
 }
