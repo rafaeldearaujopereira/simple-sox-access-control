@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "feature")
-public class Feature {
+public class Feature implements Comparable<Feature> {
 
 	/** Id. */
 	@Id
@@ -163,5 +163,17 @@ public class Feature {
 			return name;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return getFeaturePath();
+	}
+
+	@Override
+	public int compareTo(Feature o) {
+		return this.getId().compareTo(o.getId());
+	}
+	
+	
 	
 }

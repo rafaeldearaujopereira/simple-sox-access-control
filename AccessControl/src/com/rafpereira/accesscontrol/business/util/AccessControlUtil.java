@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.persistence.TypedQuery;
 
@@ -292,7 +293,7 @@ public class AccessControlUtil {
 		Session session = AccessControlSessionFactoryUtil.getInstance().getSession();
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("select r.features ");
+		sb.append("select f ");
 		sb.append("from User u ");
 		sb.append("join u.roles r ");
 		sb.append("join r.features f ");
@@ -302,9 +303,9 @@ public class AccessControlUtil {
 		TypedQuery<Feature> query = session.createQuery(sb.toString(), Feature.class);
 		query.setParameter("userId", userSession.getUser().getId());
 		
-		List<Feature> userFeatures = new ArrayList<>();
-		List<Feature> firstLevelFeatures = new ArrayList<>();
-		List<Feature> finalFeatures = new ArrayList<>();
+		TreeSet<Feature> userFeatures = new TreeSet<>();
+		TreeSet<Feature> firstLevelFeatures = new TreeSet<>();
+		TreeSet<Feature> finalFeatures = new TreeSet<>();
 		{
 			for (Feature feature : query.getResultList()) {
 				Feature current = feature;
@@ -315,6 +316,7 @@ public class AccessControlUtil {
 						userFeatures.addAll(featuresPath);
 						firstLevelFeatures.add(current);
 						finalFeatures.add(feature);
+						break;
 					} else {
 						current = current.getParent();
 					}
@@ -339,7 +341,7 @@ public class AccessControlUtil {
 			}
 			session.close();
 		}
-		return firstLevelFeatures;
+		return new ArrayList<>(firstLevelFeatures);
 	}
 
 	
