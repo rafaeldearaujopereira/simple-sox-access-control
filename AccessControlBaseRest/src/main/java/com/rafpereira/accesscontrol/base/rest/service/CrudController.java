@@ -156,7 +156,7 @@ public abstract class CrudController<T> {
 	/**
 	 * Extracts the properties given on a request (for audit).
 	 * 
-	 * @param o    Object
+	 * @param o Object
 	 * @param path Previous Path (recursive)
 	 * @return Event details
 	 */
