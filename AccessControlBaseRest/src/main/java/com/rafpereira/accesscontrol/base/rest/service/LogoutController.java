@@ -24,6 +24,7 @@ import com.rafpereira.accesscontrol.rest.security.config.SessionTokenUtil;
 @RestController
 public class LogoutController {
 
+	/** Request. */
 	@Autowired
 	private HttpServletRequest request;
 
