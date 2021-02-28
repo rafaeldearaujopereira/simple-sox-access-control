@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rafpereira.accesscontrol.base.rest.service.CrudController;
 import com.rafpereira.accesscontrol.business.util.CrudAccessControlUtil;
-import com.rafpereira.accesscontrol.business.util.FeatureTypeUtil;
-import com.rafpereira.accesscontrol.model.FeatureType;
+import com.rafpereira.accesscontrol.business.util.EventTypeUtil;
+import com.rafpereira.accesscontrol.model.EventType;
 import com.rafpereira.accesscontrol.rest.auth.api.UserAuthenticationService;
 
 @RestController
-@RequestMapping("/featureTypes")
-public class FeatureTypeController extends CrudController<FeatureType> {
+@RequestMapping("/eventTypes")
+public class EventTypeController extends CrudController<EventType> {
 
 	@NonNull
 	UserAuthenticationService authentication;
 
 	@Override
-	protected CrudAccessControlUtil<FeatureType> getCrudUtil() {
-		return new FeatureTypeUtil();
+	protected CrudAccessControlUtil<EventType> getCrudUtil() {
+		return new EventTypeUtil();
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class FeatureTypeController extends CrudController<FeatureType> {
 	}
 
 	@Override
-	protected Long getItemId(FeatureType featureType) {
-		return featureType.getId();
+	protected Long getItemId(EventType eventType) {
+		return eventType.getId();
 	}
 
 	@Override
-	protected FeatureType getNewItem(Long id) {
-		FeatureType featureType = new FeatureType();
-		featureType.setId(id);
-		return featureType;
+	protected EventType getNewItem(Long id) {
+		EventType eventType = new EventType();
+		eventType.setId(id);
+		return eventType;
 	}
 
 }
