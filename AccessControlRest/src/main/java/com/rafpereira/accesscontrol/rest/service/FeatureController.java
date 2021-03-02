@@ -14,6 +14,9 @@ import com.rafpereira.accesscontrol.rest.auth.api.UserAuthenticationService;
 @RequestMapping("/features")
 public class FeatureController extends CrudController<Feature> {
 
+	private static final String SEARCH = "AC_SEARCH_FEATURE";
+	private static final String UPDATE = "AC_UPDATE_FEATURE";
+	private static final String NEW = "AC_NEW_FEATURE";
 	@NonNull
 	UserAuthenticationService authentication;
 
@@ -24,17 +27,17 @@ public class FeatureController extends CrudController<Feature> {
 
 	@Override
 	public String getNewItemFeatureCode() {
-		return "AC_NEW_FEATURE";
+		return NEW;
 	}
 
 	@Override
 	public String getUpdateItemFeatureCode() {
-		return "AC_UPDATE_FEATURE";
+		return UPDATE;
 	}
 
 	@Override
 	public String getSearchFeatureCode() {
-		return "AC_SEARCH_FEATURE";
+		return SEARCH;
 	}
 
 	@Override

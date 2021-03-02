@@ -17,6 +17,9 @@ import com.rafpereira.accesscontrol.rest.auth.api.UserAuthenticationService;
 @RequestMapping("/roles")
 public class RoleController extends CrudController<Role> {
 
+	private static final String SEARCH = "AC_SEARCH_ROLE";
+	private static final String UPDATE = "AC_UPDATE_ROLE";
+	private static final String NEW = "AC_NEW_ROLE";
 	@NonNull
 	UserAuthenticationService authentication;
 
@@ -25,24 +28,19 @@ public class RoleController extends CrudController<Role> {
 		return new RoleUtil();
 	}
 
-	@GetMapping("/current")
-	User getCurrent(@AuthenticationPrincipal final User user) {
-		return user;
-	}
-
 	@Override
 	public String getNewItemFeatureCode() {
-		return "AC_NEW_ROLE";
+		return NEW;
 	}
 
 	@Override
 	public String getUpdateItemFeatureCode() {
-		return "AC_UPDATE_ROLE";
+		return UPDATE;
 	}
 
 	@Override
 	public String getSearchFeatureCode() {
-		return "AC_SEARCH_ROLE";
+		return SEARCH;
 	}
 
 	@Override
