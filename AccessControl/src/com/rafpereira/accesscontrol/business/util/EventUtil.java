@@ -9,7 +9,6 @@ import org.hibernate.Session;
 
 import com.rafpereira.accesscontrol.data.util.AccessControlSessionFactoryUtil;
 import com.rafpereira.accesscontrol.model.Event;
-import com.rafpereira.accesscontrol.model.EventStatus;
 import com.rafpereira.data.util.SessionFactoryUtil;
 
 /**
