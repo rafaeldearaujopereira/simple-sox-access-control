@@ -7,18 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rafpereira.accesscontrol.base.rest.service.CrudController;
 import com.rafpereira.accesscontrol.business.util.CrudAccessControlUtil;
 import com.rafpereira.accesscontrol.business.util.EventUtil;
-import com.rafpereira.accesscontrol.business.util.RoleUtil;
 import com.rafpereira.accesscontrol.model.Event;
-import com.rafpereira.accesscontrol.model.Role;
 import com.rafpereira.accesscontrol.rest.auth.api.UserAuthenticationService;
 
 @RestController
 @RequestMapping("/events")
 public class EventController extends CrudController<Event> {
 
-	private static final String SEARCH = "AC_SEARCH_ROLE";
-	private static final String UPDATE = "AC_UPDATE_ROLE";
-	private static final String NEW = "AC_NEW_ROLE";
+	private static final String SEARCH = "AC_SEARCH_EVENT";
 	@NonNull
 	UserAuthenticationService authentication;
 
@@ -29,12 +25,12 @@ public class EventController extends CrudController<Event> {
 
 	@Override
 	public String getNewItemFeatureCode() {
-		return NEW;
+		return null;
 	}
 
 	@Override
 	public String getUpdateItemFeatureCode() {
-		return UPDATE;
+		return null;
 	}
 
 	@Override
